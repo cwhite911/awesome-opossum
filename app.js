@@ -3,11 +3,8 @@
 var express = require('express'),
 	app = express();
 	app.use(express.static(__dirname + '/'));
-	// app.listen();
 var http = require('http').Server(app),
  	io = require('socket.io')(http);
-
-// app.use(express.static(__dirname + '/app'));
 
 app.get('/', function(req, res){
   res.sendFile('index.html', {root: __dirname + '/app/'}, function (err){

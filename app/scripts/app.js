@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('awesome-opossume', ['ngRoute'])
+var app = angular.module('awesome-opossum', ['ngRoute'])
 .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
