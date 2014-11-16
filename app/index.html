@@ -7,7 +7,6 @@
   <!-- bower installed css files will go here... -->
   <!-- endinject -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="app/bower/angular/angular-csp.css">
   <!-- endinject -->
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -15,13 +14,13 @@
 <body ng-app="awesome-opossume">
   <h1>Awesome-Opossume.io</h1>
   <p>Hello from Awesome-Opossume.io</p>
+  <div ng-view=""></div>
    <!-- bower:js -->
    <script src="../bower_components/angular/angular.js"></script>
+   <script src="../bower_components/angular-route/angular-route.js"></script>
    <!-- endinject -->
    <!-- inject:js -->
   <script src="app/scripts/app.js"></script>
-  <script src="app/bower/angular/angular.js"></script>
-  <script src="app/bower/angular/angular.min.js"></script>
   <script src="app/scripts/controllers/login.js"></script>
   <script src="app/scripts/controllers/main.js"></script>
   <!-- endinject -->

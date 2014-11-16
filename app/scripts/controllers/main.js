@@ -1,7 +1,7 @@
 'use strict';
 
 (function(){
-	app.controller('MainCtrl', function($scope) {
+	angular.module('awesome-opossume').controller('MainCtrl', function($scope) {
   		$scope.test = 'Via Con Dios!';
 	});
 })();
