@@ -1,6 +1,5 @@
 'use strict';
 
-var angular = require('angular');
 var app = angular.module('awesome-opossume', ['ngRoute'])
 .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -15,4 +14,3 @@ var app = angular.module('awesome-opossume', ['ngRoute'])
         redirectTo: '/'
       });
 }]);
-

@@ -1,5 +1,8 @@
 var gulp = require('gulp'),
-	browserify = require('gulp-browserify'),
+	bowerFiles = require('main-bower-files'),
+	bower = require("gulp-bower"),
+	angularFilesort = require('gulp-angular-filesort'),
+	inject = require("gulp-inject"),
 	concat = require('gulp-concat'),
 	nodemon = require('gulp-nodemon'),
 	jshint = require('gulp-jshint');
@@ -12,35 +15,25 @@ gulp.task('lint', function() {
   .pipe(jshint.reporter('default'));
 });
 
-// Browserify task
-gulp.task('browserify', function() {
-  // Single point of entry (make sure not to src ALL your files, browserify will figure it out for you)
-  gulp.src(['app/app.js'])
-  .pipe(browserify({
-    insertGlobals: true,
-    debug: true
-  }))
-  // Bundle to a single file
-  .pipe(concat('bundle.js'))
-  // Output it to our dist folder
-  .pipe(gulp.dest('dist/js'));
+// gulp.task('bower', function() {
+//   return bower('./bower_components')
+//     .pipe(gulp.dest('./app/bower/'))
+// });
+
+gulp.task('inject', function(){
+  return gulp.src('app/index.html')
+    // inject the css files and css
+    .pipe(inject(gulp.src(['./app/**/*.js','./app/**/*.css'], {read:false}), {addPrefix: 'app', relative:true}))
+    // inject the js file
+    // inject the bower components
+    .pipe(inject(gulp.src(bowerFiles(), {read: false}), {name:'bower', relative:true}))
+    .pipe(gulp.dest('./app'));
 });
 
 gulp.task('serve', function () {
   nodemon({ script: 'app.js', ext: 'html js', ignore: [] })
-    .on('change', ['lint', 'browserify'])
+    .on('change', ['lint','inject'])
     .on('restart', function () {
-      console.log('restarted!')
-    })
-})
-
-// watch files for changes and reload
-// gulp.task('serve', function() {
-//   browserSync({
-//     server: {
-//       baseDir: 'app'
-//     }
-//   });
-
-//   gulp.watch(['*.html', 'styles/**/*.css', 'views/*.html', 'controllers/*.js'], {cwd: 'app'}, reload);
-// });
+      console.log('restarted!');
+   });
+});
