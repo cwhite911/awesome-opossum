@@ -1,0 +1,23 @@
+body {
+  padding-top: 70px;
+  background: url(../images/background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.glow-brand {
+  height: 30px;
+  width:50px;
+}
+.large-logo {
+   /*background: url(../images/logo.png) no-repeat;*/
+}
+
+.large-logo:hover {
+   background: url(../images/glow.png) no-repeat;
+}
+.burn-text {
+  color: white;
+  text-shadow: 5px 5px 25px #F22C05;
+}

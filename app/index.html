@@ -13,8 +13,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body ng-app="awesome-opossum">
-  <h1>Awesome-Opossum.io</h1>
-  <p>Hello from Awesome-Opossum.io</p>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" class="glow-brand" src="/app/images/glow.png">
+      </a>
+      <p class="navbar-text">AO</p>
+    </div>
+    <a href="/#/login"><p class="navbar-text navbar-right" >Sign in</p></a>
+  </div>
+</nav>
   <div ng-view=""></div>
    <!-- bower:js -->
    <script src="../bower_components/angular/angular.js"></script>

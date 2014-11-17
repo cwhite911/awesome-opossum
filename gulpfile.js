@@ -5,7 +5,9 @@ var gulp = require('gulp'),
 	inject = require("gulp-inject"),
 	concat = require('gulp-concat'),
 	nodemon = require('gulp-nodemon'),
-	jshint = require('gulp-jshint');
+	jshint = require('gulp-jshint'),
+	livereload = require('gulp-livereload'),
+	watch = require('gulp-watch');;
 
 // JSHint task
 gulp.task('lint', function() {
@@ -15,10 +17,10 @@ gulp.task('lint', function() {
   .pipe(jshint.reporter('default'));
 });
 
-// gulp.task('bower', function() {
-//   return bower('./bower_components')
-//     .pipe(gulp.dest('./app/bower/'))
-// });
+gulp.task('watch', function(){
+	livereload.listen();
+  gulp.watch('./app/**').on('change', livereload.changed);
+});
 
 gulp.task('inject', function(){
   return gulp.src('app/index.html')
@@ -31,8 +33,8 @@ gulp.task('inject', function(){
 });
 
 gulp.task('serve', function () {
-  nodemon({ script: 'app.js', ext: 'html js', ignore: [] })
-    .on('change', ['lint','inject'])
+  nodemon({ script: 'app.js', ext: 'html js', ignore: ['./app'] })
+    .on('change', ['lint','inject', 'watch'])
     .on('restart', function () {
       console.log('restarted!');
    });
