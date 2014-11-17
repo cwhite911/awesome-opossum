@@ -17,11 +17,6 @@ gulp.task('lint', function() {
   .pipe(jshint.reporter('default'));
 });
 
-gulp.task('watch', function(){
-	livereload.listen();
-  gulp.watch('app/**/*').on('change', livereload.changed);
-});
-
 gulp.task('inject', function(){
   return gulp.src('app/index.html')
     // inject the css files and css
@@ -32,9 +27,16 @@ gulp.task('inject', function(){
     .pipe(gulp.dest('./app'));
 });
 
+gulp.task('watch', function(){
+	livereload.listen();
+	gulp.watch('app/**/*').on('change', livereload.changed);
+	gulp.watch('bower_components/', ['inject']);
+});
+
 gulp.task('serve', function () {
   nodemon({ script: 'app.js', ext: 'html js', ignore: ['./app'] })
-    .on('change', ['lint','inject', 'watch'])
+		.on('start', ['watch'])
+    .on('change', ['lint'])
     .on('restart', function () {
       console.log('restarted!');
    });
