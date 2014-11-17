@@ -19,7 +19,7 @@ gulp.task('lint', function() {
 
 gulp.task('watch', function(){
 	livereload.listen();
-  gulp.watch('./app/**').on('change', livereload.changed);
+  gulp.watch('app/**/*').on('change', livereload.changed);
 });
 
 gulp.task('inject', function(){
