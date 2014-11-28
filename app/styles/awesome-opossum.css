@@ -21,3 +21,7 @@ body {
   color: white;
   text-shadow: 5px 5px 25px #F22C05;
 }
+#laserEyes {
+  height: 500px;
+  width: 500px;
+}
